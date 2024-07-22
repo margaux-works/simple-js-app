@@ -1,2 +1,3 @@
 # simple-js-app
-Simple JavaScript application 
+
+Simple JavaScript application
