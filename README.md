@@ -1,4 +1,4 @@
-# Pokédex - A Simplie Javascript App
+# Pokédex - A Simple Javascript App
 
 ## Project Status
 
