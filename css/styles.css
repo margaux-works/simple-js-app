@@ -1,0 +1,27 @@
+:root {
+  --background-color: #edf2f4;
+  --primary-color: #2b2d42;
+  --primary-color-lighter: #8d99ae;
+  --secondary-color: #d90429;
+  --secondary-color-lighter: #ef233c;
+}
+
+body {
+  background-color: var(--background-color);
+  margin-top: 20px;
+  margin-left: 20px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+header {
+  text-align: center;
+}
+
+h1 {
+  font-family: 'Orbitron', sans-serif;
+}
+
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--secondary-color);
+}
