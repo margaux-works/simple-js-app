@@ -12,6 +12,13 @@ An app that allows user to view a list of Pokemon and see detailed information p
 
 ## Key Features
 
+- Dynamic Pokemon List
+- Interactive buttons
+- Event Handling
+- Modular JavaScrit (IIFE)
+- Custom Styling
+- Error handling
+
 ## Requirements
 
 - The app must load data from an external API; for instance, the Pokémon API.
