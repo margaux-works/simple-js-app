@@ -19,14 +19,28 @@
   </head>
   <body>
     <header>
-      <h1>Pokédex</h1>
-      <h2>The Pokemon encyclopedia</h2>
+      <nav>
+        <h1>Pokédex</h1>
+        <img src="/img/favicon.svg" alt="Pkemon logo" width="50px" id="logo" />
+        <h2>The Pokemon encyclopedia</h2>
+      </nav>
     </header>
     <main>
-      <ul class="pokemon-list"></ul>
-    </main>
+      <div class="pokedex">
+        <input type="text" class="search" placeholder="Search Pokemon" />
 
-    <script src="js/scripts.js"></script>
+        <button class="sort" data-sort="name">Sort by Name</button>
+        <button class="sort" data-sort="height">Sort by Height</button>
+        <button class="sort" data-sort="types">Sort by Type</button>
+      </div>
+      <ul class="list pokemon-list"></ul>
+      <div class="loading-message" style="display: none">
+        Patience, we are loading...
+      </div>
+    </main>
     <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
+    <script src="js/promise-polyfill.js"></script>
+    <script src="js/fetch-polyfill.js"></script>
+    <script src="js/scripts.js"></script>
   </body>
 </html>
