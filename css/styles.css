@@ -25,6 +25,10 @@ h1 {
   display: inline;
 }
 
+#logo {
+  float: right;
+}
+
 h2 {
   color: var(--secondary-color);
 }
@@ -42,6 +46,8 @@ ul {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   list-style: none;
+  padding: 0px 0px;
+  padding-inline-start: 0px;
 }
 
 li {

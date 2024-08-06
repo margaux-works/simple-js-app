@@ -49,7 +49,6 @@ let pokemonRepository = (function () {
     button.insertBefore(imageElement, button.firstChild);
 
     listItem.appendChild(button);
-    // pokemonList.appendChild(listItem);
     pokemonListElement.appendChild(listItem);
     button.addEventListener('click', function () {
       showDetails(pokemon);
@@ -57,7 +56,6 @@ let pokemonRepository = (function () {
   }
 
   function showDetails(item) {
-    console.log('showDetails called for', item.name);
     showLoadingMessage();
     loadDetails(item)
       .then(function () {
@@ -93,7 +91,6 @@ let pokemonRepository = (function () {
           loadDetails(pokemon);
         });
         hideLoadingMessage();
-        // initializeListJs();
       })
       .catch(function (e) {
         console.error(e);
@@ -122,7 +119,6 @@ let pokemonRepository = (function () {
   }
 
   function showModal(title, text, img) {
-    console.log('showModal called with title:', title); // Debugging added
     modalContainer.innerHTML = '';
     let modal = document.createElement('div');
     modal.classList.add('modal');
@@ -170,21 +166,6 @@ let pokemonRepository = (function () {
     }
   });
 
-  // function initializeListJs() {
-  //   let options = {
-  //     valueNames: ['pokemon-btn'],
-  //     listClass: 'pokemon-list',
-  //   };
-
-  //   let pokeDex = new List('pokemon-list', options);
-
-  //   document
-  //     .querySelector('.search')
-  //     .addEventListener('input', function (event) {
-  //       pokeDex.search(event.target.value);
-  //     });
-  // }
-
   return {
     add: add,
     getAll: getAll,
@@ -197,6 +178,36 @@ let pokemonRepository = (function () {
 })();
 
 pokemonRepository.loadList();
-// // .then(function () {
-// //   pokemonRepository.getAll().forEach(function (pokemon) {});
-// });
+
+// ListJS //
+//Option 1
+// let options = {
+//   valueNames: ['name'],
+//   fuzzySearch: {
+//     searchClass: 'fuzzy-search',
+//     location: 0,
+//     distance: 100,
+//     threshold: 0.4,
+//     multiSearch: true,
+//   },
+// };
+
+// let pokeDex = new List('pokemon-list', options);
+// pokeDex.fuzzySearch('my search');
+
+//Option 2
+
+// function initializeListJs() {
+//   let options = {
+//     valueNames: ['name'],
+//     listClass: 'pokemon-list',
+//   };
+
+//   let pokeDex = new List('pokemon-list', options);
+
+//   document
+//     .querySelector('.search')
+//     .addEventListener('input', function (event) {
+//       pokeDex.search(event.target.value);
+//     });
+// }
