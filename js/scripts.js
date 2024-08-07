@@ -43,14 +43,41 @@ let pokemonRepository = (function () {
     button.classList.add('pokemon-btn', 'btn');
     listItem.classList.add('list-group-item');
 
-    //add image
     let imageElement = document.createElement('img');
     imageElement.classList.add('pokemon-image', 'card-img-top');
     imageElement.src = pokemon.imageUrl;
+
+    imageElement.crossOrigin = 'anonymous';
+
     button.insertBefore(imageElement, button.firstChild);
 
     listItem.appendChild(button);
     pokemonListElement.appendChild(listItem);
+
+    // color extraction logic
+    imageElement.addEventListener('load', function () {
+      let colorThief = new ColorThief();
+      let dominantColor = colorThief.getColor(imageElement);
+      let rgbColor = `rgb(${dominantColor.join(',')})`;
+      button.style.backgroundColor = rgbColor;
+
+      // store dominant color
+      pokemon.dominantColor = rgbColor;
+
+      // Calculate brightness to set text color
+      let brightness =
+        (dominantColor[0] * 299 +
+          dominantColor[1] * 587 +
+          dominantColor[2] * 114) /
+        1000;
+      pokemon.isBright = brightness > 125; // Store brightness in the pokemon object
+      if (pokemon.isBright) {
+        button.classList.add('text-dark');
+      } else {
+        button.classList.add('text-light');
+      }
+    });
+
     button.addEventListener('click', function () {
       showDetails(pokemon);
     });
@@ -68,7 +95,9 @@ let pokemonRepository = (function () {
             'Height: ' +
             item.height +
             '\n',
-          item.imageUrl
+          item.imageUrl,
+          item.dominantColor,
+          item.isBright
         );
         console.log(item);
         hideLoadingMessage();
@@ -122,15 +151,33 @@ let pokemonRepository = (function () {
 
   // Modal Bootstrap
 
-  function showModal(title, text, img) {
+  function showModal(title, text, img, color, isBright) {
     let modalBody = document.querySelector('.modal-body');
     let modalTitle = document.querySelector('.modal-title');
     let modalImage = document.querySelector('#pokemonImg');
     let modalDetails = document.querySelector('.pokemon-details');
+    let modalHeader = document.querySelector('.modal-header');
+    let modalFooter = document.querySelector('.modal-footer');
 
     modalTitle.innerText = title;
     modalImage.src = img;
     modalDetails.innerText = text;
+
+    modalHeader.style.backgroundColor = color;
+    modalFooter.style.backgroundColor = color;
+
+    // Apply the text color class based on brightness
+    if (isBright) {
+      modalHeader.classList.add('text-dark');
+      modalFooter.classList.add('text-dark');
+      modalHeader.classList.remove('text-light');
+      modalFooter.classList.remove('text-light');
+    } else {
+      modalHeader.classList.add('text-light');
+      modalFooter.classList.add('text-light');
+      modalHeader.classList.remove('text-dark');
+      modalFooter.classList.remove('text-dark');
+    }
 
     $('#pokemonModal').modal('show');
   }

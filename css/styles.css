@@ -74,7 +74,7 @@ li {
   width: 100%;
   transition-duration: 0.2s;
   border-radius: 5%;
-  background-color: var(--background-color);
+  /* background-color: var(--background-color); */
 }
 
 .pokemon-image {
@@ -104,7 +104,27 @@ body {
 
 .modal-content {
   background-color: var(--background-color);
-  border: 6px solid var(--primary-color);
+  border: 3px solid var(--primary-color);
+  overflow: hidden;
+  border-radius: 5%;
+}
+
+.text-dark {
+  color: #333 !important;
+}
+
+.text-light {
+  color: #fff !important;
+}
+
+.modal-header,
+.modal-footer {
+  color: white;
+}
+
+.modal-header.text-dark,
+.modal-footer.text-dark {
+  color: black;
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
