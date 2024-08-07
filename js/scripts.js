@@ -40,11 +40,12 @@ let pokemonRepository = (function () {
     let listItem = document.createElement('li');
     let button = document.createElement('button');
     button.innerText = pokemon.name;
-    button.classList.add('pokemon-btn');
+    button.classList.add('pokemon-btn', 'btn');
+    listItem.classList.add('list-group-item');
 
     //add image
     let imageElement = document.createElement('img');
-    imageElement.classList.add('pokemon-image');
+    imageElement.classList.add('pokemon-image', 'card-img-top');
     imageElement.src = pokemon.imageUrl;
     button.insertBefore(imageElement, button.firstChild);
 
@@ -69,6 +70,7 @@ let pokemonRepository = (function () {
             '\n',
           item.imageUrl
         );
+        console.log(item);
         hideLoadingMessage();
       })
       .catch(function () {
@@ -118,42 +120,19 @@ let pokemonRepository = (function () {
       });
   }
 
+  // Modal Bootstrap
+
   function showModal(title, text, img) {
-    modalContainer.innerHTML = '';
-    let modal = document.createElement('div');
-    modal.classList.add('modal');
+    let modalBody = document.querySelector('.modal-body');
+    let modalTitle = document.querySelector('.modal-title');
+    let modalImage = document.querySelector('#pokemonImg');
+    let modalDetails = document.querySelector('.pokemon-details');
 
-    let closeButtonElement = document.createElement('button');
-    closeButtonElement.classList.add('modal-close');
-    closeButtonElement.innerText = 'X';
-    closeButtonElement.addEventListener('click', hideModal);
+    modalTitle.innerText = title;
+    modalImage.src = img;
+    modalDetails.innerText = text;
 
-    let titleElement = document.createElement('h3');
-    titleElement.innerText = title;
-
-    let contentElement = document.createElement('p');
-    contentElement.innerText = text;
-
-    let imageElement = document.createElement('img');
-    imageElement.setAttribute('src', img);
-    imageElement.setAttribute('width', '100%');
-    imageElement.setAttribute('height', '100%');
-    imageElement.setAttribute('alt', 'Pokemon image');
-
-    modal.appendChild(closeButtonElement);
-    modal.appendChild(titleElement);
-    modal.appendChild(contentElement);
-    modal.appendChild(imageElement);
-    modalContainer.appendChild(modal);
-
-    modalContainer.classList.add('is-visible');
-
-    modalContainer.addEventListener('click', (e) => {
-      let target = e.target;
-      if (target === modalContainer) {
-        hideModal();
-      }
-    });
+    $('#pokemonModal').modal('show');
   }
 
   function hideModal() {
