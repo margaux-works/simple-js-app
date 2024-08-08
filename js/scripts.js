@@ -54,6 +54,21 @@ let pokemonRepository = (function () {
     listItem.appendChild(button);
     pokemonListElement.appendChild(listItem);
 
+    imageElement.addEventListener('load', function () {
+      if (pokemon.dominantColor) {
+        button.style.backgroundColor = pokemon.dominantColor;
+        if (pokemon.isBright) {
+          button.classList.add('text-dark');
+        } else {
+          button.classList.add('text-light');
+        }
+      }
+    });
+
+    button.addEventListener('click', function () {
+      showDetails(pokemon);
+    });
+
     // color extraction logic
     imageElement.addEventListener('load', function () {
       let colorThief = new ColorThief();
@@ -99,13 +114,13 @@ let pokemonRepository = (function () {
           item.dominantColor,
           item.isBright
         );
-        console.log(item);
         hideLoadingMessage();
       })
       .catch(function () {
         hideLoadingMessage();
       });
   }
+
   function loadList() {
     showLoadingMessage();
     return fetch(apiUrl)
@@ -113,13 +128,20 @@ let pokemonRepository = (function () {
         return response.json();
       })
       .then(function (json) {
-        json.results.forEach(function (item) {
-          let pokemon = {
-            name: item.name,
-            detailsUrl: item.url,
-          };
-          add(pokemon);
-          loadDetails(pokemon);
+        return Promise.all(
+          json.results.map(function (item) {
+            let pokemon = {
+              name: item.name,
+              detailsUrl: item.url,
+            };
+            add(pokemon);
+            return loadDetails(pokemon); // Load details before adding to list
+          })
+        );
+      })
+      .then(function (pokemonList) {
+        pokemonList.forEach(function (pokemon) {
+          addListItem(pokemon); // Add list item only after details are loaded
         });
         hideLoadingMessage();
       })
@@ -141,7 +163,7 @@ let pokemonRepository = (function () {
         item.height = details.height;
         item.types = details.types;
         hideLoadingMessage();
-        addListItem(item);
+        // addListItem(item);
       })
       .catch(function (e) {
         console.error(e);
@@ -270,7 +292,11 @@ let pokemonRepository = (function () {
   };
 })();
 
-pokemonRepository.loadList();
+pokemonRepository.loadList().then(function () {
+  pokemonRepository.getAll().forEach(function (pokemon) {
+    pokemonRepository.addListItem(pokemon);
+  });
+});
 
 // ListJS //
 //Option 1
