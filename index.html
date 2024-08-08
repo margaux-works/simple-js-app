@@ -25,22 +25,29 @@
   </head>
   <body>
     <header>
-      <nav>
+      <nav
+        class="navbar navbar-light"
+        id="home"
+        role="navigation"
+        aria-label="navigationBar"
+      >
         <h1>Pokédex</h1>
         <img src="img/favicon.svg" alt="Pokemon logo" width="50px" id="logo" />
-        <h2>The Pokemon encyclopedia</h2>
       </nav>
     </header>
     <main>
       <div class="pokedex">
-        <input type="text" class="search" placeholder="Search Pokemon" />
+        <div class="filters">
+          <input type="text" class="search" placeholder="Search Pokemon" />
 
-        <button class="sort" data-sort="name">Sort by Name</button>
-        <button class="sort" data-sort="height">Sort by Height</button>
-        <button class="sort" data-sort="types">Sort by Type</button>
-
+          <button class="sort" data-sort="name">Sort by Name</button>
+          <button class="sort" data-sort="height">Sort by Height</button>
+          <button class="sort" data-sort="types">Sort by Type</button>
+        </div>
         <div id="loading-message" style="display: none">...loading...</div>
+
         <ul id="pokemon-list" class="list pokemon-list list-group"></ul>
+
         <!-- Bootstrap Modal-->
         <div
           class="modal fade"
@@ -70,10 +77,9 @@
                 <img
                   id="pokemonImg"
                   src="#"
-                  width="304"
-                  height="228"
+                  width="230px"
                   alt="Pokemon Sprite"
-                  class="img-fluid pokemon-image"
+                  class="pokemon-image-modal"
                 />
               </div>
               <div class="modal-footer">

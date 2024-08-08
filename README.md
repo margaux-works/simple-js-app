@@ -16,6 +16,8 @@ An app that allows user to view a list of Pokemon and see detailed information p
 - Interactive buttons
 - Event Handling
 - Modular JavaScrit (IIFE)
+- Boostrap integration
+- Color Thief JS Library
 - Custom Styling
 - Error handling
 
