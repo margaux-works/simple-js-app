@@ -39,7 +39,11 @@ let pokemonRepository = (function () {
     let pokemonListElement = document.querySelector('#pokemon-list');
     let listItem = document.createElement('li');
     let button = document.createElement('button');
-    button.innerText = pokemon.name;
+    // button.innerText = pokemon.name;
+    let span = document.createElement('span');
+    span.innerText = pokemon.name;
+    span.classList.add('name');
+    button.appendChild(span);
     button.classList.add('pokemon-btn', 'btn');
     listItem.classList.add('list-group-item');
 
@@ -48,7 +52,7 @@ let pokemonRepository = (function () {
     imageElement.src = pokemon.imageUrl;
 
     imageElement.crossOrigin = 'anonymous';
-
+    // button.innerText = pokemon.name;
     button.insertBefore(imageElement, button.firstChild);
 
     listItem.appendChild(button);
@@ -139,14 +143,10 @@ let pokemonRepository = (function () {
           })
         );
       })
-      .then(function (pokemonList) {
-        pokemonList.forEach(function (pokemon) {
-          addListItem(pokemon); // Add list item only after details are loaded
-        });
-        hideLoadingMessage();
-      })
       .catch(function (e) {
         console.error(e);
+      })
+      .finally(function () {
         hideLoadingMessage();
       });
   }
@@ -292,5 +292,8 @@ let pokemonRepository = (function () {
 pokemonRepository.loadList().then(function () {
   pokemonRepository.getAll().forEach(function (pokemon) {
     pokemonRepository.addListItem(pokemon);
+  });
+  new List('list-container', {
+    valueNames: ['name'],
   });
 });

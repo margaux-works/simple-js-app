@@ -41,13 +41,13 @@
           <div class="row">
             <div class="input-group mb-3 col-4 col-4">
               <input
-                type="text"
-                class="form-control"
+                type="search"
+                class="form-control fuzzy-search"
                 placeholder="Search"
                 aria-label="Search"
               />
               <div class="input-group-append">
-                <span class="input-group-text">
+                <span class="input-group-text fuzzy-search">
                   <i class="bi bi-search"></i>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -69,13 +69,13 @@
         <div id="loading-message" style="display: none" aria-live="polite">
           ...loading...
         </div>
-
-        <ul
-          id="pokemon-list"
-          class="list pokemon-list list-group"
-          role="list"
-        ></ul>
-
+        <div id="list-container">
+          <ul
+            id="pokemon-list"
+            class="list pokemon-list list-group"
+            role="list"
+          ></ul>
+        </div>
         <!-- Bootstrap Modal-->
         <div
           class="modal fade"
@@ -153,9 +153,13 @@
         </div>
       </footer>
     </main>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
+
     <script src="js/promise-polyfill.js"></script>
     <script src="js/fetch-polyfill.js"></script>
+
+    <!-- Listjs -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
+
     <!-- Bootstrap and jQuery -->
     <script
       src="https://code.jquery.com/jquery-3.3.1.min.js"
