@@ -135,6 +135,36 @@ body {
   color: black;
 }
 
+.modal-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-nav-left,
+.modal-nav-right {
+  background-color: transparent;
+  border: none;
+  font-size: 2rem;
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+.modal-nav-left {
+  margin-right: 10px;
+}
+
+.modal-nav-right {
+  margin-left: 10px;
+}
+
+.pokemon-modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
+
 @media screen and (min-width: 481px) and (max-width: 768px) {
   #pokemon-list {
     grid-template-columns: repeat(4, 1fr);

@@ -179,7 +179,70 @@ let pokemonRepository = (function () {
       modalFooter.classList.remove('text-dark');
     }
 
+    // left & right navigation
+    document
+      .querySelector('.modal-nav-left')
+      .addEventListener('click', showPreviousPokemon);
+    document
+      .querySelector('.modal-nav-right')
+      .addEventListener('click', showNextPokemon);
+
+    // keydown event
+    document.addEventListener('keydown', handleArrowKeys);
+
+    // swipe right & left
+    document.addEventListener('DOMContentLoaded', function () {
+      // Initialize Hammer.js on the modal
+      let modalElement = document.querySelector('.modal-content');
+      let hammer = new Hammer(modalElement);
+      hammer.on('swipeleft', showNextPokemon);
+      hammer.on('swiperight', showPreviousPokemon);
+
+      // Define swipe actions
+      hammer.on('swipeleft', function () {
+        showNextPokemon();
+      });
+
+      hammer.on('swiperight', function () {
+        showPreviousPokemon();
+      });
+    });
+
     $('#pokemonModal').modal('show');
+  }
+
+  function handleArrowKeys(e) {
+    if (e.key === 'ArrowLeft') {
+      showPreviousPokemon();
+    } else if (e.key === 'ArrowRight') {
+      showNextPokemon();
+    }
+  }
+
+  function showPreviousPokemon() {
+    let currentPokemonIndex = pokemonRepository
+      .getAll()
+      .findIndex(
+        (p) => p.name === document.querySelector('.modal-title').innerText
+      );
+    if (currentPokemonIndex > 0) {
+      pokemonRepository.showDetails(
+        pokemonRepository.getAll()[currentPokemonIndex - 1]
+      );
+    }
+  }
+
+  function showNextPokemon() {
+    let currentPokemonIndex = pokemonRepository
+      .getAll()
+      .findIndex(
+        (p) => p.name === document.querySelector('.modal-title').innerText
+      );
+    if (currentPokemonIndex < pokemonRepository.getAll().length - 1) {
+      pokemonRepository.showDetails(
+        pokemonRepository.getAll()[currentPokemonIndex + 1]
+      );
+    }
   }
 
   function hideModal() {
