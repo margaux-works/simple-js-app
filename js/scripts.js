@@ -85,7 +85,7 @@ let pokemonRepository = (function () {
           dominantColor[1] * 587 +
           dominantColor[2] * 114) /
         1000;
-      pokemon.isBright = brightness > 125; // Store brightness in the pokemon object
+      pokemon.isBright = brightness > 125;
       if (pokemon.isBright) {
         button.classList.add('text-dark');
       } else {
@@ -163,7 +163,6 @@ let pokemonRepository = (function () {
         item.height = details.height;
         item.types = details.types;
         hideLoadingMessage();
-        // addListItem(item);
       })
       .catch(function (e) {
         console.error(e);
@@ -212,15 +211,13 @@ let pokemonRepository = (function () {
     // keydown event
     document.addEventListener('keydown', handleArrowKeys);
 
-    // Initialize swipe functionality #SRLchange
+    // Initialize swipe functionality
     initializeSwipe();
 
     $('#pokemonModal').modal('show');
   }
 
-  // Function to initialize swipe gestures #SRLchange
   function initializeSwipe() {
-    //SRLchange
     let modalElement = document.querySelector('.modal-content');
     if (modalElement) {
       let hammer = new Hammer(modalElement);
@@ -297,36 +294,3 @@ pokemonRepository.loadList().then(function () {
     pokemonRepository.addListItem(pokemon);
   });
 });
-
-// ListJS //
-//Option 1
-// let options = {
-//   valueNames: ['name'],
-//   fuzzySearch: {
-//     searchClass: 'fuzzy-search',
-//     location: 0,
-//     distance: 100,
-//     threshold: 0.4,
-//     multiSearch: true,
-//   },
-// };
-
-// let pokeDex = new List('pokemon-list', options);
-// pokeDex.fuzzySearch('my search');
-
-//Option 2
-
-// function initializeListJs() {
-//   let options = {
-//     valueNames: ['name'],
-//     listClass: 'pokemon-list',
-//   };
-
-//   let pokeDex = new List('pokemon-list', options);
-
-//   document
-//     .querySelector('.search')
-//     .addEventListener('input', function (event) {
-//       pokeDex.search(event.target.value);
-//     });
-// }

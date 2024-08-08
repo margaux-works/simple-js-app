@@ -37,14 +37,13 @@ h1 {
   justify-content: center;
 }
 
-/* .sort {
-  padding: 0.5rem;
-  margin: 0.5rem;
-  border-radius: 0.5rem;
-  color: var(--background-color);
-  background-color: var(--primary-color);
-  cursor: pointer;
-} */
+.input-group-text {
+  border-left: 0;
+}
+
+.input-group .form-control {
+  border-right: 0;
+}
 
 #pokemon-list {
   display: grid;
@@ -81,7 +80,6 @@ li {
   padding: 0.5rem;
   margin: 0.2rem;
   font-weight: 700;
-  color: var(--primary-color--red);
   width: 100%;
   transition-duration: 0.2s;
   border-radius: 5%;
@@ -98,11 +96,6 @@ li {
   cursor: pointer;
   box-shadow: 4px 4px 0 0 var(--primary-color);
   transform: translate(-3px, -3px);
-}
-
-html,
-body {
-  font-family: Arial, sans-serif;
 }
 
 .modal-title {
