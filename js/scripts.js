@@ -190,15 +190,19 @@ let pokemonRepository = (function () {
     // keydown event
     document.addEventListener('keydown', handleArrowKeys);
 
-    // swipe right & left
-    document.addEventListener('DOMContentLoaded', function () {
-      // Initialize Hammer.js on the modal
-      let modalElement = document.querySelector('.modal-content');
-      let hammer = new Hammer(modalElement);
-      hammer.on('swipeleft', showNextPokemon);
-      hammer.on('swiperight', showPreviousPokemon);
+    // Initialize swipe functionality #SRLchange
+    initializeSwipe();
 
-      // Define swipe actions
+    $('#pokemonModal').modal('show');
+  }
+
+  // Function to initialize swipe gestures #SRLchange
+  function initializeSwipe() {
+    //SRLchange
+    let modalElement = document.querySelector('.modal-content');
+    if (modalElement) {
+      let hammer = new Hammer(modalElement);
+
       hammer.on('swipeleft', function () {
         showNextPokemon();
       });
@@ -206,9 +210,9 @@ let pokemonRepository = (function () {
       hammer.on('swiperight', function () {
         showPreviousPokemon();
       });
-    });
-
-    $('#pokemonModal').modal('show');
+    } else {
+      console.error('Modal content not found for swipe initialization.');
+    }
   }
 
   function handleArrowKeys(e) {
