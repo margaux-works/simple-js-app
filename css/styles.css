@@ -178,8 +178,14 @@ li {
     grid-template-columns: repeat(6, 1fr);
   }
 }
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 992px) and (max-width: 1200px) {
   #pokemon-list {
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(7, 1fr);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #pokemon-list {
+    grid-template-columns: repeat(9, 1fr);
   }
 }
