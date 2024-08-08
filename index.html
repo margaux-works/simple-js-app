@@ -29,7 +29,7 @@
         class="navbar navbar-light"
         id="home"
         role="navigation"
-        aria-label="navigationBar"
+        aria-label="Main Navigation"
       >
         <h1>Pokédex</h1>
         <img src="img/favicon.svg" alt="Pokemon logo" width="50px" id="logo" />
@@ -37,16 +37,27 @@
     </header>
     <main>
       <div class="pokedex">
-        <div class="filters">
-          <input type="text" class="search" placeholder="Search Pokemon" />
-
-          <button class="sort" data-sort="name">Sort by Name</button>
-          <button class="sort" data-sort="height">Sort by Height</button>
-          <button class="sort" data-sort="types">Sort by Type</button>
+        <form>
+          <div class="row">
+            <div class="col-6">
+              <input
+                class="form-control"
+                type="text"
+                placeholder="Search Pokemon"
+                aria-label="Search Pokemon"
+              />
+            </div>
+          </div>
+        </form>
+        <div id="loading-message" style="display: none" aria-live="polite">
+          ...loading...
         </div>
-        <div id="loading-message" style="display: none">...loading...</div>
 
-        <ul id="pokemon-list" class="list pokemon-list list-group"></ul>
+        <ul
+          id="pokemon-list"
+          class="list pokemon-list list-group"
+          role="list"
+        ></ul>
 
         <!-- Bootstrap Modal-->
         <div
@@ -72,7 +83,11 @@
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div class="modal-body">
+              <div
+                class="modal-body"
+                id="pokemon-modal-body"
+                aria-describedby="pokemon-modal-body"
+              >
                 <p class="pokemon-details"></p>
                 <img
                   id="pokemonImg"
