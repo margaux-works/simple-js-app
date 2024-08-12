@@ -9,14 +9,12 @@
 
 html {
   background-color: var(--background-color-red);
-  max-width: 100%;
 }
 
 body {
   height: 100%;
   font-family: 'Montserrat', sans-serif;
   text-align: center;
-  justify-content: center;
   background-color: var(--background-color-red);
   overflow-x: hidden;
 }
@@ -57,47 +55,42 @@ a:hover {
 
 .input-group .form-control {
   border-right: 0;
+  min-width: 80px;
 }
 
 #pokemon-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
   list-style: none;
-  padding: 0px 0px;
-  padding-inline-start: 0px;
+  padding: 0;
   margin: 0 auto;
   background-color: var(--background-color-red);
   box-sizing: border-box;
 }
 
 .pokedex {
-  max-width: 100%;
   padding: 0 1rem;
-}
-
-li {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-grow: 6;
-  box-sizing: border-box;
 }
 
 .list-group-item {
   background-color: var(--background-color-red);
   padding: 0.3rem 0.3rem;
   border: none;
-  box-sizing: border-box;
 }
 
 .pokemon-btn {
   padding: 0.5rem;
-  margin: 0.2rem;
   font-weight: 700;
   width: 100%;
   transition-duration: 0.2s;
   border-radius: 5%;
-  width: 100%;
+}
+
+.pokemon-btn,
+li,
+.list-group-item {
+  box-sizing: border-box;
 }
 
 .pokemon-image {
@@ -126,11 +119,11 @@ li {
 }
 
 .pokemon.details .text-dark {
-  color: #333 !important;
+  color: #333;
 }
 
 .text-light {
-  color: #fff !important;
+  color: #fff;
 }
 
 .modal-header,
@@ -182,24 +175,24 @@ li {
   text-decoration: underline;
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: 580px) and (max-width: 850px) {
   #pokemon-list {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-@media screen and (min-width: 769px) and (max-width: 992px) {
+@media screen and (min-width: 850px) and (max-width: 992px) {
   #pokemon-list {
     grid-template-columns: repeat(6, 1fr);
   }
 }
-@media screen and (min-width: 992px) and (max-width: 1200px) {
+@media screen and (min-width: 992px) and (max-width: 1250px) {
   #pokemon-list {
     grid-template-columns: repeat(7, 1fr);
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1250px) {
   #pokemon-list {
     grid-template-columns: repeat(9, 1fr);
   }
