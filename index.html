@@ -9,7 +9,7 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
     <link rel="shortcut icon" href="img/favicon.svg" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -32,7 +32,7 @@
         aria-label="Main Navigation"
       >
         <h1 id="title-pokedex"><a href="index.html">Pokédex</a></h1>
-        <img src="img/favicon.svg" alt="Pokemon logo" width="50px" id="logo" />
+        <img src="img/favicon.svg" alt="Pokemon logo" width="50" id="logo" />
       </nav>
     </header>
     <main>
@@ -106,10 +106,7 @@
                 id="pokemon-modal-body"
                 aria-describedby="pokemon-modal-body"
               >
-                <button
-                  class="modal-nav-left"
-                  aria-describedby="Previous Pokemon"
-                >
+                <button class="modal-nav-left" aria-label="Previous Pokemon">
                   &laquo;
                 </button>
                 <div class="pokemon-modal-content">
@@ -117,7 +114,7 @@
                   <img
                     id="pokemonImg"
                     src="#"
-                    width="230px"
+                    width="230"
                     alt="Pokemon Sprite"
                     class="pokemon-image-modal"
                   />
