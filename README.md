@@ -18,7 +18,12 @@ Check out the live version of the app [here](https://margaux-works.github.io/sim
 
 ## Key Features
 
-- **Dynamic Pokémon List:** Data is fetched in real-time from the PokéAPI, ensuring an up-to-date list of Pokémon. -**Responsive Design:** The app is fully responsive, ensuring optimal display on devices of all sizes. -**Interactive UI:** The app features interactive buttons for navigation and Pokémon selection. -**Detailed Pokémon Information:** View detailed information about each Pokémon in a clean and accessible modal. -**Modular JavaScript (IIFE):** The app’s JavaScript code is organized using Immediately Invoked Function Expressions for better encapsulation and modularity. -**Bootstrap Integration:** Utilizes Bootstrap 4.3.1 for components. -**Color Thief Library:** Extracts prominent colors from Pokémon images to enhance UI elements. -**List.js Integration:** Adds dynamic search functionality to the Pokémon list.
+- **Dynamic Pokémon List:** Data is fetched in real-time from the PokéAPI, ensuring an up-to-date list of Pokémon.
+- **Responsive Design:** The app is fully responsive, ensuring optimal display on devices of all sizes.
+- **Interactive UI:** The app features interactive buttons for navigation and Pokémon selection. - **Detailed Pokémon Information:** View detailed information about each Pokémon in a clean and accessible modal.
+- **Modular JavaScript (IIFE):** The app’s JavaScript code is organized using Immediately Invoked Function Expressions for better encapsulation and modularity.
+- **Bootstrap Integration:** Utilizes Bootstrap 4.3.1 for components.
+- **Color Thief Library:** Extracts prominent colors from Pokémon images to enhance UI elements. - **List.js Integration:** Adds dynamic search functionality to the Pokémon list.
 
 ## Technologies Used
 
@@ -51,7 +56,7 @@ Check out the live version of the app [here](https://margaux-works.github.io/sim
 
 ## API
 
-Pokémon data is fetched from the [PokéAPI] (https://pokeapi.co/about). For more information on the API and available endpoints, visit their official documentation.
+Pokémon data is fetched from the [PokéAPI](https://pokeapi.co/about). For more information on the API and available endpoints, visit their official documentation.
 
 ## Contributing
 
@@ -65,4 +70,4 @@ Contributions are welcome! If you'd like to improve this project, please fork th
 
 ## License
 
-This project is for educational purposes and is not intended for commercial use. Pokémon and all related content are trademarks of the Pokémon Company. For more information, visit the official Pokémon website (https://www.pokemon.com/us).
+This project is for educational purposes and is not intended for commercial use. Pokémon and all related content are trademarks of the Pokémon Company. For more information, visit the official [Pokémon website](https://www.pokemon.com/us).
