@@ -1,4 +1,7 @@
 let pokemonRepository = (function () {
+  let colorThief = new ColorThief();
+  let activeIndex = 0;
+
   let pokemonList = [];
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
   let modalContainer = document.querySelector('#modal-container');
@@ -35,7 +38,7 @@ let pokemonRepository = (function () {
     });
   }
 
-  function addListItem(pokemon) {
+  function addListItem(pokemon, index) {
     let pokemonListElement = document.querySelector('#pokemon-list');
     let listItem = document.createElement('li');
     let button = document.createElement('button');
@@ -70,12 +73,13 @@ let pokemonRepository = (function () {
     });
 
     button.addEventListener('click', function () {
+      // here i need to save the index of the pokemon i clicked on
+      activeIndex = index;
       showDetails(pokemon);
     });
 
     // color extraction logic
     imageElement.addEventListener('load', function () {
-      let colorThief = new ColorThief();
       let dominantColor = colorThief.getColor(imageElement);
       let rgbColor = `rgb(${dominantColor.join(',')})`;
       button.style.backgroundColor = rgbColor;
@@ -243,28 +247,18 @@ let pokemonRepository = (function () {
   }
 
   function showPreviousPokemon() {
-    let currentPokemonIndex = pokemonRepository
-      .getAll()
-      .findIndex(
-        (p) => p.name === document.querySelector('.modal-title').innerText
-      );
-    if (currentPokemonIndex > 0) {
-      pokemonRepository.showDetails(
-        pokemonRepository.getAll()[currentPokemonIndex - 1]
-      );
+    if (activeIndex > 0) {
+      activeIndex--;
+      pokemonRepository.showDetails(pokemonRepository.getAll()[activeIndex]);
     }
   }
 
   function showNextPokemon() {
-    let currentPokemonIndex = pokemonRepository
-      .getAll()
-      .findIndex(
-        (p) => p.name === document.querySelector('.modal-title').innerText
-      );
-    if (currentPokemonIndex < pokemonRepository.getAll().length - 1) {
-      pokemonRepository.showDetails(
-        pokemonRepository.getAll()[currentPokemonIndex + 1]
-      );
+    const pokemons = pokemonRepository.getAll();
+    const length = pokemons.length;
+    if (activeIndex < length - 1) {
+      activeIndex++;
+      pokemonRepository.showDetails(pokemons[activeIndex]);
     }
   }
 
@@ -290,8 +284,9 @@ let pokemonRepository = (function () {
 })();
 
 pokemonRepository.loadList().then(function () {
-  pokemonRepository.getAll().forEach(function (pokemon) {
-    pokemonRepository.addListItem(pokemon);
+  pokemonRepository.getAll().forEach(function (pokemon, index) {
+    console.log(pokemon.name, index);
+    pokemonRepository.addListItem(pokemon, index);
   });
   new List('list-container', {
     valueNames: ['name'],
